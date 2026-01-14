@@ -5,6 +5,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="src/script.js"></script>
     <title>Cadastro de usuario</title>
 </head>
 
@@ -36,11 +39,10 @@
                                         </div>
                                         <div class="input-field col s6">
                                             <i class="material-icons prefix">calendar_month</i>
-                                            <input id="data_nascimento" type="tel" class="validate"
-                                                pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/AAAA" maxlength="10">
+                                            <input id="data_nascimento" type="date" class="validate">
                                             <label for="data_nascimento" data-error="Data inválida">Data de
                                                 Nascimento</label>
-                                            <span class="helper-text" data-error="Formato: DD/MM/AAAA"></span>
+                                            <span class="helper-text" data-error="Data futura não permitida"></span>
                                         </div>
                                         <button class="btn purple">Adicionar</button>
                                     </div>
