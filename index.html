@@ -15,6 +15,10 @@
     <nav>
         <div class="nav-wrapper purple">
             <a href="#" class="brand-logo center">Cadastro de usuario</a>
+            <ul id="nav-link" class="right">
+                <li><a href="user.html">Usuarios Cadastros</a></li>
+
+            </ul>
         </div>
     </nav>
     <div class="container">
@@ -22,40 +26,41 @@
             <div class="col s12 m8 l6 offset-m2 offset-l3">
                 <div class="card">
                     <div class="card-content">
-                        <form>
-
-                            <div class="row">
-                                <form class="col s12">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">account_circle</i>
-                                            <input id="nome" class="validate">
-                                            <label for="nome">Nome</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">email</i>
-                                            <input id="email" type="email" class="validate">
-                                            <label for="email">E-mail</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">calendar_month</i>
-                                            <input id="data_nascimento" type="date" class="validate">
-                                            <label for="data_nascimento" data-error="Data inválida">Data de
-                                                Nascimento</label>
-                                            <span class="helper-text" data-error="Data futura não permitida"></span>
-                                        </div>
-                                        <button class="btn purple">Adicionar</button>
+                        <span class="card-title center-align">Novo Cadastro</span>
+                        <div class="row">
+                            <form class="col s12" ind="form-cadastro">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input id="nome" class="validate">
+                                        <label for="nome">Nome</label>
                                     </div>
-                                </form>
-                            </div>
-
-                        </form>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">email</i>
+                                        <input id="email" type="email" class="validate">
+                                        <label for="email">E-mail</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">calendar_month</i>
+                                        <input id="data_nascimento" type="date" class="validate">
+                                        <label for="data_nascimento" data-error="Data inválida">Data de
+                                            Nascimento</label>
+                                        <span class="helper-text" data-error="Data futura não permitida"></span>
+                                    </div>
+                                </div>
+                                <div class="center-align">
+                                    <button class="btn waves-effect waves-light purple" type="submit"
+                                        id="btn-adicionar">Adicionar
+                                        <i class="material-icons right">send</i>
+                                        </butt>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
