@@ -1,0 +1,11 @@
+.titulo-usuarios {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #4a148c;
+    margin: 0;
+}
+
+.titulo-usuarios .material-icons {
+    margin-right: 10px;
+}
