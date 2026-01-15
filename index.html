@@ -13,7 +13,7 @@
 
 <body>
     <nav>
-        <div class="nav-wrapper purple">
+        <div class="nav-wrapper purple darken-3">
             <a href="#" class="brand-logo center">Cadastro de usuario</a>
             <ul id="nav-link" class="right">
                 <li><a href="user.html">Usuarios Cadastros</a></li>
@@ -30,28 +30,29 @@
                         <div class="row">
                             <form class="col s12" id="form-cadastro">
                                 <div class="row">
-                                    <div class="input-field col s12">
+                                    <div class="input-field col s12 purple-text text-darken-3">
                                         <i class="material-icons prefix">account_circle</i>
                                         <input id="nome" type="text" class="validate" required>
-                                        <label for="nome">Nome</label>
+                                        <label for="nome" class="purple-text text-darken-3">Nome</label>
                                     </div>
-                                    <div class="input-field col s12">
+                                    <div class="input-field col s12 purple-text text-darken-3">
                                         <i class="material-icons prefix">email</i>
                                         <input id="email" type="email" class="validate" required>
-                                        <label for="email">E-mail</label>
+                                        <label for="email" class="purple-text text-darken-3">E-mail</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix ">calendar_month</i>
-                                        <input id="data_nascimento" type="date" class="validate" required>
-                                        <label for="data_nascimento" data-error="Data inválida">Data de
+                                        <i class="material-icons prefix purple-text text-darken-3">calendar_month</i>
+                                        <input id="data_nascimento" type="date" class="validate " required>
+                                        <label for="data_nascimento" data-error="Data inválida"
+                                            class="purple-text text-darken-3">Data de
                                             Nascimento</label>
                                         <span class="helper-text" data-error="Data futura não permitida"></span>
                                     </div>
                                 </div>
                                 <div class="center-align">
-                                    <button class="btn waves-effect waves-light purple" type="submit"
+                                    <button class="btn waves-effect waves-light deep-purple accent-2" type="submit"
                                         id="btn-adicionar">Adicionar
-                                        <i class="material-icons right">send</i>
+                                        <i class="material-icons left">add</i>
                                     </button>
                                 </div>
                             </form>
