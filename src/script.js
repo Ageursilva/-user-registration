@@ -73,6 +73,18 @@ $(document).ready(function () {
         }
     }
     return idade;
-});
+})
+
+function adicionarUsuarioNaTabela(usuario) {
+    var idade = calcularIdade(usuario.data_nascimento);
+    var linha = `
+      <tr>
+        <td>${usuario.nome}</td>
+        <td>${usuario.email}</td>
+        <td>${idade}</td>
+      </tr>
+    `;
+    $('#tabela-corpo').append(linha);
+};
 
 
