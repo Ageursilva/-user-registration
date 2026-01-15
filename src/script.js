@@ -33,7 +33,7 @@ $(document).ready(function () {
     }
     function obterUsuarios() {
         var dados = localStorage.getItem('usuarios');
-        return dados ? JSON.parse(dados) : {};
+        return dados ? JSON.parse(dados) : [];
     }
     function salvarUsuarios(usuarios) {
         localStorage.setItem('usuarios', JSON.stringify(usuarios))
@@ -63,7 +63,7 @@ $(document).ready(function () {
             M.toast({ html: 'Usuario cadastrado com sucesso!' });
         });
     }
-    function calularIdade(dataNascISO) {
+    function calcularIdade(dataNascISO) {
         var hoje = new Date();
         var nasc = new Date(dataNascISO);
         var idade = hoje.getFullYear() - nasc.getFullYear();
@@ -71,20 +71,28 @@ $(document).ready(function () {
         if (mes < 0 || (mes === 0 && hoje.getDate() < nasc.getDate())) {
             idade--;
         }
+        return idade;
     }
-    return idade;
-})
 
-function adicionarUsuarioNaTabela(usuario) {
-    var idade = calcularIdade(usuario.data_nascimento);
-    var linha = `
+    function adicionarUsuarioNaTabela(usuario) {
+        var idade = calcularIdade(usuario.data_nascimento);
+        var linha = `
       <tr>
         <td>${usuario.nome}</td>
         <td>${usuario.email}</td>
         <td>${idade}</td>
       </tr>
     `;
-    $('#tabela-corpo').append(linha);
-};
+        $('#tabela-corpo').append(linha);
+    };
 
 
+    var $tabelaCorpo = $('#tabela-corpo');
+    if ($tabelaCorpo.length) {
+        var usuarios = obterUsuarios();
+        usuarios.forEach(function (u) {
+            adicionarUsuarioNaTabela(u);
+
+        });
+    }
+})
