@@ -31,6 +31,38 @@ $(document).ready(function () {
             }
         });
     }
+    function obterUsuarios() {
+        var dados = localStorage.getItem('usuarios');
+        return dados ? JSON.parse(dados) : {};
+    }
+    function salvarUsuarios(usuarios) {
+        localStorage.setItem('usuarios', JSON.stringify(usuarios))
+    }
+    var $formCadastro = $('#form-cadastro');
+    if ($formCadastro.length) {
+        $formCadastro.on('submit', function (e) {
+            e.preventDefault();
+            var nome = $('#nome').val().trim();
+            var email = $('#email').val().trim();
+            var dataNasc = $('#data_nascimento').val().trim();
+
+            if (!nome || !email || !dataNasc) {
+                M.toast({ html: 'Preencha todos os campos.' });
+                return;
+            }
+            var usuarios = obterUsuarios();
+            usuarios.push({
+                nome: nome,
+                email: email,
+                data_nascimento: dataNasc
+            });
+            salvarUsuarios(usuarios);
+            this.reset();
+            $('input').removeClass('valid invalid');
+
+            M.toast({ html: 'Usuario cadastrado com sucesso!' });
+        });
+    }
     function calularIdade(dataNascISO) {
         var hoje = new Date();
         var nasc = new Date(dataNascISO);
