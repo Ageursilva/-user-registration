@@ -47,7 +47,7 @@ $(document).ready(function () {
             var dataNasc = $('#data_nascimento').val().trim();
 
             if (!nome || !email || !dataNasc) {
-                M.toast({ html: 'Preencha todos os campos.' });
+                M.toast({ html: 'Preencha todos os campos.', classes: 'yellow' });
                 return;
             }
             var usuarios = obterUsuarios();
@@ -60,7 +60,7 @@ $(document).ready(function () {
             this.reset();
             $('input').removeClass('valid invalid');
 
-            M.toast({ html: 'Usuario cadastrado com sucesso!' });
+            M.toast({ html: 'Usuario cadastrado com sucesso!', classes: 'green' });
         });
     }
     function calcularIdade(dataNascISO) {
