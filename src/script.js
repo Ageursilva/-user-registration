@@ -87,12 +87,73 @@ $(document).ready(function () {
     };
 
 
+    function renderizarTabela(usuarios) {
+        $tabelaCorpo.empty();
+        usuarios.forEach(function (u) {
+            adicionarUsuarioNaTabela(u);
+        });
+    }
+
+    function aplicarFiltro(usuarios, termo) {
+        if (!termo) {
+            return usuarios;
+        }
+        var termoNormalizado = termo.toLowerCase();
+        return usuarios.filter(function (usuario) {
+            return (
+                usuario.nome.toLowerCase().includes(termoNormalizado) ||
+                usuario.email.toLowerCase().includes(termoNormalizado)
+            );
+        });
+    }
+
+    function ordenarUsuarios(usuarios, campo, direcao) {
+        return usuarios.slice().sort(function (a, b) {
+            var valorA = a[campo];
+            var valorB = b[campo];
+            if (campo === 'data_nascimento') {
+                valorA = new Date(valorA);
+                valorB = new Date(valorB);
+            } else {
+                valorA = valorA.toLowerCase();
+                valorB = valorB.toLowerCase();
+            }
+            if (valorA < valorB) {
+                return direcao === 'asc' ? -1 : 1;
+            }
+            if (valorA > valorB) {
+                return direcao === 'asc' ? 1 : -1;
+            }
+            return 0;
+        });
+    }
+
     var $tabelaCorpo = $('#tabela-corpo');
     if ($tabelaCorpo.length) {
         var usuarios = obterUsuarios();
-        usuarios.forEach(function (u) {
-            adicionarUsuarioNaTabela(u);
+        var ordenacaoAtual = { campo: 'nome', direcao: 'asc' };
 
+        renderizarTabela(usuarios);
+
+        $('#busca-dados').on('input', function () {
+            var termo = $(this).val().trim();
+            var filtrados = aplicarFiltro(usuarios, termo);
+            var ordenados = ordenarUsuarios(filtrados, ordenacaoAtual.campo, ordenacaoAtual.direcao);
+            renderizarTabela(ordenados);
+        });
+
+        $('[data-sort]').on('click', function () {
+            var campo = $(this).data('sort');
+            if (ordenacaoAtual.campo === campo) {
+                ordenacaoAtual.direcao = ordenacaoAtual.direcao === 'asc' ? 'desc' : 'asc';
+            } else {
+                ordenacaoAtual.campo = campo;
+                ordenacaoAtual.direcao = 'asc';
+            }
+            var termo = $('#busca-dados').val().trim();
+            var filtrados = aplicarFiltro(usuarios, termo);
+            var ordenados = ordenarUsuarios(filtrados, ordenacaoAtual.campo, ordenacaoAtual.direcao);
+            renderizarTabela(ordenados);
         });
     }
 })
